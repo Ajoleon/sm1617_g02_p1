@@ -2,4 +2,12 @@
     <string name="app_name">Practica1</string>
     <string name="main_title">Práctica 1</string>
     <string name="main_description">Práctica realizada para la asignatura <i>Servicios Moviles</i> del grado de Ingenieria Telemática de la Universidad de Jaén \n Soy Antonio </string>
+    <string name="auth_name">Nombre</string>
+    <string name="auth_hint_user">Escriba su usuario</string>
+    <string name="auth_pass">Clave</string>
+    <string name="auth_hint_pass">Escriba su clave</string>
+    <string name="auth_ip" >Direccion IP</string>
+    <string name="auth_hint_ip">Direccion del servidor</string>
+    <string name="auth_port">Puerto</string>
+    <string name="auth_hint_port">Puerto de conexion</string>
 </resources>
