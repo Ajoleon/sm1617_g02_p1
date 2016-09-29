@@ -20,14 +20,21 @@
         android:background="#44345454"
         android:padding ="5dp"/>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/main_text_title"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/main_frame"
+        android:background="@color/accent_material_light"></FrameLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/main_description"
-        android:id="@+id/main_text_description"
-        android:gravity="center"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+    <!--  <fragment
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:name="es.ujaen.git.practica1.AuthFragment"
+          android:id="@+id/fragment"
+          android:layout_centerVertical="true"
+          android:layout_centerHorizontal="true" />-->
+
+
 </RelativeLayout>
