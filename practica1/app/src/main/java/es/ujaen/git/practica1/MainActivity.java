@@ -27,7 +27,12 @@ public class MainActivity extends AppCompatActivity {
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View w) {
-                Toast.makeText(MainActivity.this, "Pulsado el 1", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Recopilando datos...", Toast.LENGTH_SHORT).show();
+                String usuario = R.id.auth_edit_user;
+                String clave = R.id.auth_edit_pass;
+                String ip = R.id.auth_edit_ip;
+                int puerto = R.id.auth_edit_port;
+                Datos datos = new Datos(usuario, clave, ip, puerto);
 
             }
         });
@@ -38,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
          *
          * @param view la vista que ha generado el evento
          */
-
+/* prueba
     public void onSend(View view) {
         switch (view.getId()) {
             case R.id.auth_button_send:
@@ -49,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
-
+*/
 }
 
 

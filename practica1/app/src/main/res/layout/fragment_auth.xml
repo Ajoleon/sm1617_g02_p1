@@ -89,12 +89,4 @@
         android:layout_alignParentStart="true"
         android:onClick="onSend" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/auth_enviar"
-        android:id="@+id/auth_button_send2"
-        android:layout_below="@+id/auth_button_send"
-        android:layout_alignParentStart="true" />
-
 </RelativeLayout>
