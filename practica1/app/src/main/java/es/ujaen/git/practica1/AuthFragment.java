@@ -31,6 +31,9 @@ public class AuthFragment extends Fragment {
     private String mPass;
 
     private EditText mEditUser;
+    private EditText mEditPass;
+    private EditText mEditIp;
+    private EditText mEditPort;
 
     private OnFragmentInteractionListener mListener;
 
@@ -66,31 +69,46 @@ public class AuthFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View fragmento =  inflater.inflate(R.layout.fragment_auth, container, false);
-       EditText user = (EditText) fragmento.findViewById(R.id.auth_edit_user);
+        EditText user = (EditText) fragmento.findViewById(R.id.auth_edit_user);
         EditText pass = (EditText) fragmento.findViewById(R.id.auth_edit_pass);
         user.setText(mUser);
         pass.setText(mPass);
-        return fragmento;
-    }
 
-        Button boton = (Button) findViewById(R.id.auth_button_send);
-        mEditUser = (EditText)findViewById(R.id.auth_edit_user);
+
+        Button boton = (Button) fragmento.findViewById(R.id.auth_button_send);
+        mEditUser = (EditText)fragmento.findViewById(R.id.auth_edit_user);
+        mEditPass = (EditText)fragmento.findViewById(R.id.auth_edit_pass);
+        mEditIp = (EditText)fragmento.findViewById(R.id.auth_edit_ip);
+        mEditPort = (EditText)fragmento.findViewById(R.id.auth_edit_port);
+
         mEditUser.setText(mUser);
+        mEditPass.setText(mPass);
 
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View w) {
-                Toast.makeText(MainActivity.this, "Pulsado el 1", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Pulsado el 1", Toast.LENGTH_SHORT).show();
 
-                String nombre = mEditUser.getText().toString();
-                Autentication datos = new Autentication(nombre,null,0,null);
-                //Toast.makeText(getActivity(), "Nombre: "+datos.getUser() Toast.LENGTH_SHORT).show();
+                String usuario = mEditUser.getText().toString();
+                String password = mEditPass.getText().toString();
+                String ip = mEditIp.getText().toString();
+                Integer puerto = mEditPort.getInputType();
+                //Toast.makeText(fragmento.this,nombre,Toast.LENGTH_SHORT).show();
+                Autentication datos = new Autentication(usuario,password,puerto,ip);
+
+                Toast.makeText(getActivity(), "Usuario: "+datos.getmUser(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Password: "+datos.getmPass(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Ip: "+datos.getmIP(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Puerto: "+datos.getmPort(),Toast.LENGTH_SHORT).show();
             }
         });
+
+        return fragmento;
+    }
+
 
 
     // TODO: Rename method, update argument and hook method into UI event
