@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
                 String clave = R.id.auth_edit_pass;
                 String ip = R.id.auth_edit_ip;
                 int puerto = R.id.auth_edit_port;
-                Datos datos = new Datos(usuario, clave, ip, puerto);
 
             }
         });
