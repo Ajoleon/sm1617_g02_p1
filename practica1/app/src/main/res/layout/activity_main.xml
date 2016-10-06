@@ -26,7 +26,7 @@
         android:layout_below="@+id/main_text_title"
         android:layout_centerHorizontal="true"
         android:id="@+id/main_frame"
-        android:background="@color/accent_material_light"></FrameLayout>
+        android:background="@android:color/holo_blue_bright"></FrameLayout>
 
     <!--  <fragment
           android:layout_width="wrap_content"
