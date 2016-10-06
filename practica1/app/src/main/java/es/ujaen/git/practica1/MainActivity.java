@@ -24,9 +24,7 @@ public class MainActivity extends AppCompatActivity {
         ft.add(R.id.main_frame, au);
         // ft.disallowAddToBackStack(null);//añade a la pila y se puede volver al fragmento anterior, si hay pila
         ft.commit();
-
-<<<<<<< HEAD
-=======
+/*
         Button boton = (Button) findViewById(R.id.auth_button_send);
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
->>>>>>> origin/master
+*/
     }
 
         /**
@@ -48,9 +46,8 @@ public class MainActivity extends AppCompatActivity {
          *
          * @param view la vista que ha generado el evento
          */
-<<<<<<< HEAD
-/*
-=======
+
+
 /* prueba
 >>>>>>> origin/master
     public void onSend(View view) {

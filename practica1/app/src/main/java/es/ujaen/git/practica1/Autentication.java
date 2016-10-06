@@ -28,6 +28,10 @@ public class Autentication {
          return mUser;
      }
 
+     public void setmUser(String mUser) {
+         this.mUser = mUser;
+     }
+
      public String getmPass() {
          return mPass;
      }
@@ -51,6 +55,5 @@ public class Autentication {
      public void setmPort(int mPort) {
          this.mPort = mPort;
      }
-
-}
+ }
 // Autentication auth = new Autentication("pepe", "123456", "127.0.0.1", Autentication.SERVICE_PORT); forma de llamar al constructor
