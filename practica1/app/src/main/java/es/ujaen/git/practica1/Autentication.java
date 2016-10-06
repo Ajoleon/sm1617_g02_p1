@@ -24,12 +24,33 @@ public class Autentication {
         this.mIP = IP;
     }
 
-    public String getUser() {
-        return mUser;
-    }
+     public String getmUser() {
+         return mUser;
+     }
 
-    public void setmUser(String User) {
-        this.mUser = User;
-    }
+     public String getmPass() {
+         return mPass;
+     }
+
+     public void setmPass(String mPass) {
+         this.mPass = mPass;
+     }
+
+     public String getmIP() {
+         return mIP;
+     }
+
+     public void setmIP(String mIP) {
+         this.mIP = mIP;
+     }
+
+     public int getmPort() {
+         return mPort;
+     }
+
+     public void setmPort(int mPort) {
+         this.mPort = mPort;
+     }
+
 }
 // Autentication auth = new Autentication("pepe", "123456", "127.0.0.1", Autentication.SERVICE_PORT); forma de llamar al constructor

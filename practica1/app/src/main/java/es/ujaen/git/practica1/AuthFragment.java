@@ -7,7 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 /**
@@ -27,6 +29,8 @@ public class AuthFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mUser;
     private String mPass;
+
+    private EditText mEditUser;
 
     private OnFragmentInteractionListener mListener;
 
@@ -72,6 +76,22 @@ public class AuthFragment extends Fragment {
         pass.setText(mPass);
         return fragmento;
     }
+
+        Button boton = (Button) findViewById(R.id.auth_button_send);
+        mEditUser = (EditText)findViewById(R.id.auth_edit_user);
+        mEditUser.setText(mUser);
+
+        boton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View w) {
+                Toast.makeText(MainActivity.this, "Pulsado el 1", Toast.LENGTH_SHORT).show();
+
+                String nombre = mEditUser.getText().toString();
+                Autentication datos = new Autentication(nombre,null,0,null);
+                //Toast.makeText(getActivity(), "Nombre: "+datos.getUser() Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

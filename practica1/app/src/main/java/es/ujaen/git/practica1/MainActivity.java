@@ -6,9 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +25,6 @@ public class MainActivity extends AppCompatActivity {
         // ft.disallowAddToBackStack(null);//añade a la pila y se puede volver al fragmento anterior, si hay pila
         ft.commit();
 
-        Button boton = (Button) findViewById(R.id.auth_button_send);
-        boton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View w) {
-                Toast.makeText(MainActivity.this, "Pulsado el 1", Toast.LENGTH_SHORT).show();
-
-            }
-        });
     }
 
         /**
@@ -38,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
          *
          * @param view la vista que ha generado el evento
          */
-
+/*
     public void onSend(View view) {
         switch (view.getId()) {
             case R.id.auth_button_send:
@@ -49,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
-
+*/
 }
 
 
