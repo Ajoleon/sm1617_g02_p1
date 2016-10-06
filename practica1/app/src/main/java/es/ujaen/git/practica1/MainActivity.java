@@ -25,6 +25,22 @@ public class MainActivity extends AppCompatActivity {
         // ft.disallowAddToBackStack(null);//añade a la pila y se puede volver al fragmento anterior, si hay pila
         ft.commit();
 
+<<<<<<< HEAD
+=======
+        Button boton = (Button) findViewById(R.id.auth_button_send);
+        boton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View w) {
+                Toast.makeText(MainActivity.this, "Recopilando datos...", Toast.LENGTH_SHORT).show();
+                String usuario = R.id.auth_edit_user;
+                String clave = R.id.auth_edit_pass;
+                String ip = R.id.auth_edit_ip;
+                int puerto = R.id.auth_edit_port;
+                Datos datos = new Datos(usuario, clave, ip, puerto);
+
+            }
+        });
+>>>>>>> origin/master
     }
 
         /**
@@ -32,7 +48,11 @@ public class MainActivity extends AppCompatActivity {
          *
          * @param view la vista que ha generado el evento
          */
+<<<<<<< HEAD
 /*
+=======
+/* prueba
+>>>>>>> origin/master
     public void onSend(View view) {
         switch (view.getId()) {
             case R.id.auth_button_send:
