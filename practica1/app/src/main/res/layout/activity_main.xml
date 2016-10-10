@@ -26,15 +26,17 @@
         android:layout_below="@+id/main_text_title"
         android:layout_centerHorizontal="true"
         android:id="@+id/main_frame"
-        android:background="@android:color/holo_blue_bright"></FrameLayout>
+        android:background="@android:color/holo_blue_bright">
 
-    <!--  <fragment
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:name="es.ujaen.git.practica1.AuthFragment"
-          android:id="@+id/fragment"
-          android:layout_centerVertical="true"
-          android:layout_centerHorizontal="true" />-->
+        <fragment
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:name="es.ujaen.git.practica1.AuthFragment"
+              android:id="@+id/fragment"
+              android:layout_centerVertical="true"
+              android:layout_centerHorizontal="true"
+            tools:layout="@layout/fragment_auth" />
+    </FrameLayout>
 
 
 </RelativeLayout>

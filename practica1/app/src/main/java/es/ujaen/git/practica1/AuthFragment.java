@@ -1,7 +1,5 @@
 package es.ujaen.git.practica1;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,10 +10,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link AuthFragment.OnFragmentInteractionListener} interface
+ * {@link AuthFragment} interface
  * to handle interaction events.
  * Use the {@link AuthFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -27,15 +26,13 @@ public class AuthFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mUser;
-    private String mPass;
+    private String mUser = "";
+    private String mPass = "";
 
-    private EditText mEditUser;
-    private EditText mEditPass;
-    private EditText mEditIp;
-    private EditText mEditPort;
-
-    private OnFragmentInteractionListener mListener;
+    private EditText mEditUser = null;
+    private EditText mEditPass = null;
+    private EditText mEditIp = null;
+    private EditText mEditPort = null;
 
     public AuthFragment() {
         // Required empty public constructor
@@ -69,84 +66,46 @@ public class AuthFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        View fragmento =  inflater.inflate(R.layout.fragment_auth, container, false);
+        View fragmento = inflater.inflate(R.layout.fragment_auth, container, false);
+
         EditText user = (EditText) fragmento.findViewById(R.id.auth_edit_user);
         EditText pass = (EditText) fragmento.findViewById(R.id.auth_edit_pass);
         user.setText(mUser);
         pass.setText(mPass);
 
-
         Button boton = (Button) fragmento.findViewById(R.id.auth_button_send);
-        mEditUser = (EditText)fragmento.findViewById(R.id.auth_edit_user);
-        mEditPass = (EditText)fragmento.findViewById(R.id.auth_edit_pass);
-        mEditIp = (EditText)fragmento.findViewById(R.id.auth_edit_ip);
-        mEditPort = (EditText)fragmento.findViewById(R.id.auth_edit_port);
+
+        mEditUser = (EditText) fragmento.findViewById(R.id.auth_edit_user);
+        mEditPass = (EditText) fragmento.findViewById(R.id.auth_edit_pass);
+        mEditIp = (EditText) fragmento.findViewById(R.id.auth_edit_ip);
+        mEditPort = (EditText) fragmento.findViewById(R.id.auth_edit_port);
 
         mEditUser.setText(mUser);
         mEditPass.setText(mPass);
 
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View w) {
-                //Toast.makeText(MainActivity.this, "Pulsado el 1", Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
 
                 String usuario = mEditUser.getText().toString();
                 String password = mEditPass.getText().toString();
                 String ip = mEditIp.getText().toString();
                 Integer puerto = mEditPort.getInputType();
                 //Toast.makeText(fragmento.this,nombre,Toast.LENGTH_SHORT).show();
-                Autentication datos = new Autentication(usuario,password,puerto,ip);
+                Autentication datos = new Autentication(usuario, password, ip, puerto);
 
-                Toast.makeText(getActivity(), "Usuario: "+datos.getmUser(),Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity(), "Password: "+datos.getmPass(),Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity(), "Ip: "+datos.getmIP(),Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity(), "Puerto: "+datos.getmPort(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Usuario: " + datos.getmUser(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Password: " + datos.getmPass(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Ip: " + datos.getmIP(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Puerto: " + datos.getmPort(), Toast.LENGTH_SHORT).show();
             }
         });
 
         return fragmento;
-    }
 
-
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
     }
 }

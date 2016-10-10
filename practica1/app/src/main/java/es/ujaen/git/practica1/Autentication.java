@@ -17,7 +17,7 @@ public class Autentication {
 	
 	/**Constructor autenticación
 	*/
-    public Autentication(String User, String Pass, int Port, String IP) {
+    public Autentication(String User, String Pass, String IP, int Port) {
         this.mUser = User;
         this.mPass = Pass;
         this.mPort = Port;
