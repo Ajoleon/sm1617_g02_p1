@@ -94,7 +94,7 @@ public class AuthFragment extends Fragment {
                 String usuario = mEditUser.getText().toString();
                 String password = mEditPass.getText().toString();
                 String ip = mEditIp.getText().toString();
-                Integer puerto = mEditPort.getInputType();
+                Integer puerto = Integer.parseInt(mEditPort.getText().toString());
                 //Toast.makeText(fragmento.this,nombre,Toast.LENGTH_SHORT).show();
                 Autentication datos = new Autentication(usuario, password, ip, puerto);
 
@@ -105,6 +105,16 @@ public class AuthFragment extends Fragment {
             }
         });
 
+/*
+        mEditUser.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+            public void onFocusChange(View v, boolean hasFocus){
+                if(hasFocus) {
+                    mEditUser.setHint("");
+                    mEditUser.setHintTextColor(getResources().getColor(R.color.colorAccent));//.getColor(R.color.white)
+                }else
+                    mEditUser.setHint("Your hint");
+            }
+        });*/
         return fragmento;
 
     }

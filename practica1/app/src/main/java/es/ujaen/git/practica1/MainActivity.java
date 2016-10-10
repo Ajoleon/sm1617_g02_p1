@@ -4,10 +4,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,27 +13,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FragmentManager fs = getSupportFragmentManager();
-        FragmentTransaction ft = fs.beginTransaction();
-        AuthFragment au = AuthFragment.newInstance("pepe", "123456");
-        //todo esto para ir añadiendo de forma dinamica el fragment
-        ft.add(R.id.main_frame, au);
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        AuthFragment au = AuthFragment.newInstance("","");
+        ft.add(R.id.main_frame,au);
         // ft.disallowAddToBackStack(null);//añade a la pila y se puede volver al fragmento anterior, si hay pila
+        ft.addToBackStack(null);
         ft.commit();
-/*
-        Button boton = (Button) findViewById(R.id.auth_button_send);
-        boton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View w) {
-                Toast.makeText(MainActivity.this, "Recopilando datos...", Toast.LENGTH_SHORT).show();
-                String usuario = R.id.auth_edit_user;
-                String clave = R.id.auth_edit_pass;
-                String ip = R.id.auth_edit_ip;
-                int puerto = R.id.auth_edit_port;
-
-            }
-        });
-*/
     }
 
         /**
@@ -48,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 /* prueba
->>>>>>> origin/master
     public void onSend(View view) {
         switch (view.getId()) {
             case R.id.auth_button_send:
