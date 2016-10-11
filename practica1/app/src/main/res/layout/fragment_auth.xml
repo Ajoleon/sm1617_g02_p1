@@ -54,7 +54,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/auth_edit_ip"
         android:hint="@string/auth_hint_ip"
-        android:inputType="number"
         android:layout_below="@+id/auth_edit_pass"
         android:layout_alignLeft="@+id/auth_edit_pass"
         android:layout_alignStart="@+id/auth_edit_pass" />
@@ -64,6 +63,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/auth_edit_port"
         android:hint="@string/auth_hint_port"
+        android:inputType="number"
         android:layout_below="@+id/auth_edit_ip"
         android:layout_alignLeft="@+id/auth_edit_ip"
         android:layout_alignStart="@+id/auth_edit_ip" />

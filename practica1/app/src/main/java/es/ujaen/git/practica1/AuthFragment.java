@@ -2,6 +2,8 @@ package es.ujaen.git.practica1;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.KeyEventCompat;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -115,7 +117,40 @@ public class AuthFragment extends Fragment {
                     mEditUser.setHint("Your hint");
             }
         });*/
-        return fragmento;
+        /*
+        mEditUser.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener(){
+            public void onClick(View v) {
+                mEditUser.setHint("");
+            }
+        });
+        */
+        /*
+        mEditUser.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEventCompat event) {
+                // If the event is a key-down event on the "enter" button
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    perform action;
+                    return true;
+                }
+                return false;
+            }
+        });*/
+        mEditUser.setOnKeyListener(new View.OnKeyListener() {
 
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if (event.getAction() != KeyEvent.ACTION_UP) {
+                    mEditUser.setHint("");
+                }
+                if(event.getAction()!= KeyEvent.ACTION_DOWN){
+                    mEditUser.setHint("Introduce usuario");
+                }
+
+                return false;
+            }
+        });
+        return fragmento;
     }
+
 }
