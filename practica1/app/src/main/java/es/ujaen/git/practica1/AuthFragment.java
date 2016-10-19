@@ -135,6 +135,7 @@ public class AuthFragment extends Fragment {
                 return false;
             }
         });*/
+        /*
         mEditUser.setOnKeyListener(new View.OnKeyListener() {
 
             @Override
@@ -150,6 +151,7 @@ public class AuthFragment extends Fragment {
                 return false;
             }
         });
+        */
         return fragmento;
     }
 

@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        AuthFragment au = AuthFragment.newInstance("","");
+        AuthFragment au = AuthFragment.newInstance("pepe","12345");
         ft.add(R.id.main_frame,au);
         // ft.disallowAddToBackStack(null);//añade a la pila y se puede volver al fragmento anterior, si hay pila
         ft.addToBackStack(null);
