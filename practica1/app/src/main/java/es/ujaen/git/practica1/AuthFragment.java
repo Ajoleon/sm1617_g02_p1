@@ -101,7 +101,7 @@ public class AuthFragment extends Fragment {
                 //Toast.makeText(fragmento.this,nombre,Toast.LENGTH_SHORT).show();
 
                 //Autentication datos = new Autentication(usuario, password, ip, puerto);
-                mAutentica = new Autentication(mUser,mPass,null,0);
+                //mAutentica = new Autentication(mUser,mPass,null,0);
 
                 Toast.makeText(getActivity(), "Usuario: " + mAutentica.getmUser(), Toast.LENGTH_SHORT).show();
                 Toast.makeText(getActivity(), "Password: " + mAutentica.getmPass(), Toast.LENGTH_SHORT).show();
@@ -123,13 +123,12 @@ public class AuthFragment extends Fragment {
         mEditUser = (EditText) fragmento.findViewById(R.id.auth_edit_user);
         mEditPass = (EditText) fragmento.findViewById(R.id.auth_edit_pass);
         //Cuando pierde el foco, actualiza la variable
-        mEditUser.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+        mEditUser.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void OnfocusChange(View v, boolean hasFocus){
+            public void onFocusChange(View v, boolean hasFocus) {
                 mAutentica.setmUser(mEditUser.getEditableText().toString());
             }
         });
-
         mEditUser.setText(mAutentica.getmUser());
         mEditPass.setText(mAutentica.getmPass());
 
@@ -138,6 +137,6 @@ public class AuthFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
+        outState.putString(ARG_PARAM1, mAutentica.getmUser());
     }
 }
