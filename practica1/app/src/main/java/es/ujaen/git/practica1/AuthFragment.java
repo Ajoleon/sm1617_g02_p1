@@ -168,20 +168,23 @@ public class AuthFragment extends Fragment {
                 mAutentica.setmIP(mEditIp.getEditableText().toString());
             }
         });
-        /*La aplicación se cierra cuando se clica en el puerto
-        //No consigo que guarde el numero del puerto en el objeto mAutentica
+        //Hace falta un try porque si no se pone, la aplicación no inicia
         mEditPort.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                mAutentica.setmPort(Integer.parseInt(mEditPort.getEditableText().toString()));
+                int myNum=0;
+                try {
+                    myNum = Integer.parseInt(mEditPort.getEditableText().toString());
+                } catch(NumberFormatException nfe) {
+                    System.out.println("Could not parse " + nfe);
+                }
+                mAutentica.setmPort(myNum);
             }
         });
-        */
-        //Se establece cada casilla con los atributos de la clase mAutentica
+
+        //Se establecen las casillas usuario y contraseña con los atributos de la clase mAutentica
         mEditUser.setText(mAutentica.getmUser());
         mEditPass.setText(mAutentica.getmPass());
-        mEditIp.setText(mAutentica.getmIP());
-        //mEditPort.setText(mAutentica.getmPort());
 
     }
 
