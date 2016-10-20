@@ -12,22 +12,22 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/main_title"
-        android:id="@+id/main_text_title"
+        android:text="@string/app_name"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="#44345454"
-        android:padding ="5dp"/>
-
-
+        android:id="@+id/textView" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
         <FrameLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:id="@+id/main_frame1"
-            android:background="@android:color/holo_green_light"/>
-
-
+            android:id="@+id/main_frame"
+            android:background="#11f1e2"
+            android:layout_below="@+id/textView"></FrameLayout>
+    </LinearLayout>
 </RelativeLayout>
-
 

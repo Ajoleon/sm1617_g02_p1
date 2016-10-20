@@ -18,42 +18,42 @@ public class Autentication {
 	/**Constructor autenticación
 	*/
     public Autentication(String User, String Pass, String IP, int Port) {
-        this.mUser = User;
-        this.mPass = Pass;
-        this.mPort = Port;
-        this.mIP = IP;
+        mUser = User;
+        mPass = Pass;
+        mPort = Port;
+        mIP = IP;
     }
 
      public String getmUser() {
          return mUser;
      }
 
-     public void setmUser(String mUser) {
-         this.mUser = mUser;
+     public void setmUser(String User) {
+         mUser = User;
      }
 
      public String getmPass() {
          return mPass;
      }
 
-     public void setmPass(String mPass) {
-         this.mPass = mPass;
+     public void setmPass(String Pass) {
+         mPass = Pass;
      }
 
      public String getmIP() {
          return mIP;
      }
 
-     public void setmIP(String mIP) {
-         this.mIP = mIP;
+     public void setmIP(String IP) {
+         mIP = IP;
      }
 
      public int getmPort() {
          return mPort;
      }
 
-     public void setmPort(int mPort) {
-         this.mPort = mPort;
+     public void setmPort(int Port) {
+         mPort = Port;
      }
  }
 // Autentication auth = new Autentication("pepe", "123456", "127.0.0.1", Autentication.SERVICE_PORT); forma de llamar al constructor

@@ -13,26 +13,26 @@ import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 public class MainActivity extends AppCompatActivity {
-
-
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
+    /**Método que se inicia al crear la actividad principal
+     *
+     * @param savedInstanceState
      */
-    private GoogleApiClient client;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Establecemos la vista del activity_main
         setContentView(R.layout.activity_main);
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
 
-
+        //Fragmento que existe en el main_frame
         Fragment f = fm.findFragmentById(R.id.main_frame);
+
         if(f==null){//Si no es null es que había un fragmento antes
+            //Iniciamos las variables de usuario y contraseña
             AuthFragment au = AuthFragment.newInstance("pepe", "12345");
+            //Añadimos el fragmento al main_frame
             ft.add(R.id.main_frame, au);
             ft.addToBackStack(null);
         }

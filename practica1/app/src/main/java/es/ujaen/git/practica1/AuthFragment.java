@@ -22,16 +22,19 @@ import android.widget.Toast;
  * create an instance of this fragment.
  */
 public class AuthFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
+    //Estas son las variables iniciales con las que se inicializa el fragmento
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+    //Estas dos variables las utilizaremos para establecer los valores con los que se inicializa el fragmento
+    //Se pueden ver las instrucciones que hacemos con ellas en el método OnCreate
     private String mUser = "";
     private String mPass = "";
+    //Objeto de la clase autentication donde iremos guardando los valores de los atributos que vamos escribiendo en las casillas
     private Autentication mAutentica = new Autentication("","","",0);
 
+    //Inicializamos las variables que utilizamos para cada casilla
     private EditText mEditUser = null;
     private EditText mEditPass = null;
     private EditText mEditIp = null;
@@ -45,12 +48,13 @@ public class AuthFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param user Parameter 1.
-     * @param pass Parameter 2.
-     * @return A new instance of fragment AuthFragment.
+     * @param user Usuario inicial
+     * @param pass Contraseña inicial
+     * @return Una instancia del fragmento AuthFragment, actualizada con los valores inicializados
      */
     // TODO: Rename and change types and number of parameters
     public static AuthFragment newInstance(String user, String pass) {
+        //Cuando se crea una instanca nueva, colocamos los valores iniciales de usuario y password
         AuthFragment fragment = new AuthFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, user);
@@ -59,10 +63,16 @@ public class AuthFragment extends Fragment {
         return fragment;
     }
 
+    /**En este método se establecen los valores iniciales si todavía
+     * no se ha creado ninguna instancia
+     *
+     * @param savedInstanceState Estado de la instancia guardada
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(savedInstanceState==null) {//Para que solo lo haga cuando no hay nada
+        //Para que solo lo haga cuando no hay ninguna instancia anterior
+        if(savedInstanceState==null) {
             if (getArguments() != null) {
                 mUser = getArguments().getString(ARG_PARAM1);
                 mPass = getArguments().getString(ARG_PARAM2);
@@ -72,23 +82,34 @@ public class AuthFragment extends Fragment {
         }
     }
 
+    /**En este método establecemos las instrucciones cuando se crea la vista
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState Estado de la instancia guardada
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        //Si ya se había creado una instancia
         if(savedInstanceState!=null){
+            //Mensaje de cambio de configuración
             Toast.makeText(getActivity(), "Cambio configuracion. ", Toast.LENGTH_SHORT).show();
-            //Cuando se cambia la configuracion se queda toda actualizado
+            //Se queda toda actualizado en el objeto de la clase Autentication
             mAutentica.setmUser(savedInstanceState.getString(ARG_PARAM1));
+            mAutentica.setmPass(savedInstanceState.getString(ARG_PARAM2));
         }
 
-        // Inflate the layout for this fragment
+        // Crea el fragmento fragment_auth
         View fragmento = inflater.inflate(R.layout.fragment_auth, container, false);
 
         redibuja(fragmento);
 
+        //Establecemos el botón según el id de este
         Button boton = (Button) fragmento.findViewById(R.id.auth_button_send);
 
+        //Al clickar en el botón
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,6 +124,7 @@ public class AuthFragment extends Fragment {
                 //Autentication datos = new Autentication(usuario, password, ip, puerto);
                 //mAutentica = new Autentication(mUser,mPass,null,0);
 
+                //Tostadas indicando los valores de cada atributo del objeto mAutentica
                 Toast.makeText(getActivity(), "Usuario: " + mAutentica.getmUser(), Toast.LENGTH_SHORT).show();
                 Toast.makeText(getActivity(), "Password: " + mAutentica.getmPass(), Toast.LENGTH_SHORT).show();
                 Toast.makeText(getActivity(), "Ip: " + mAutentica.getmIP(), Toast.LENGTH_SHORT).show();
@@ -111,6 +133,7 @@ public class AuthFragment extends Fragment {
             }
         });
 
+        //Devolvemos el fragmento redibujado
         return fragmento;
 
     }
@@ -119,24 +142,60 @@ public class AuthFragment extends Fragment {
     //Método que redibuja las vistas
     private void redibuja(View fragmento){
 
-
+        //El texto de cada casilla
         mEditUser = (EditText) fragmento.findViewById(R.id.auth_edit_user);
         mEditPass = (EditText) fragmento.findViewById(R.id.auth_edit_pass);
-        //Cuando pierde el foco, actualiza la variable
+        mEditIp = (EditText) fragmento.findViewById(R.id.auth_edit_ip);
+        mEditPort = (EditText) fragmento.findViewById(R.id.auth_edit_port);
+        //Cuando pierde el foco (se edita el texto), actualiza cada una de las variables
+        //Me he dado cuenta que solo guarda la variable cuando quitas el cursor de esa casilla
+        //Si no has quitado el sursor de una casilla, no lo guarda
         mEditUser.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 mAutentica.setmUser(mEditUser.getEditableText().toString());
             }
         });
+        mEditPass.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                mAutentica.setmPass(mEditPass.getEditableText().toString());
+            }
+        });
+        mEditIp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                mAutentica.setmIP(mEditIp.getEditableText().toString());
+            }
+        });
+        /*La aplicación se cierra cuando se clica en el puerto
+        //No consigo que guarde el numero del puerto en el objeto mAutentica
+        mEditPort.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                mAutentica.setmPort(Integer.parseInt(mEditPort.getEditableText().toString()));
+            }
+        });
+        */
+        //Se establece cada casilla con los atributos de la clase mAutentica
         mEditUser.setText(mAutentica.getmUser());
         mEditPass.setText(mAutentica.getmPass());
+        mEditIp.setText(mAutentica.getmIP());
+        //mEditPort.setText(mAutentica.getmPort());
 
     }
 
+    /**Método para mantener los datos al rotar la pantalla
+     *
+     * @param outState
+     */
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        //Guardamos el usuario y la contraseña en las variables iniciales
+        //Aunque permanezcan los textos en la dirección y el puerto, no se guardan
+        //Para guardarlas, hay que editar los textos
         outState.putString(ARG_PARAM1, mAutentica.getmUser());
+        outState.putString(ARG_PARAM2, mAutentica.getmPass());
     }
 }
