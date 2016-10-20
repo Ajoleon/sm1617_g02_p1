@@ -41,15 +41,6 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/auth_edit_ip"
-        android:hint="@string/auth_hint_ip"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/auth_edit_port"
         android:hint="@string/auth_hint_port"
         android:inputType="number"
@@ -65,19 +56,6 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/auth_button_send"
         android:layout_toEndOf="@+id/auth_button_send" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/auth_ip"
-        android:id="@+id/auth_label_ip"
-        android:layout_alignBaseline="@+id/auth_edit_ip"
-        android:layout_alignBottom="@+id/auth_edit_ip"
-        android:layout_toLeftOf="@+id/auth_edit_ip"
-        android:layout_toStartOf="@+id/auth_edit_ip"
-        android:layout_marginRight="7dp"
-        android:layout_marginEnd="7dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -99,5 +77,29 @@
         android:layout_below="@+id/auth_edit_pass"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/auth_edit_ip"
+        android:hint="@string/auth_hint_ip"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/auth_label_ip"
+        android:layout_toEndOf="@+id/auth_label_ip"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/auth_ip"
+        android:id="@+id/auth_label_ip"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp"
+        android:layout_alignBaseline="@+id/auth_edit_user"
+        android:layout_alignBottom="@+id/auth_edit_user"
+        android:layout_toRightOf="@+id/auth_edit_user"
+        android:layout_toEndOf="@+id/auth_edit_user" />
 
 </RelativeLayout>
