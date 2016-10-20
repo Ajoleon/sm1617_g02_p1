@@ -30,6 +30,7 @@ public class AuthFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mUser = "";
     private String mPass = "";
+    private Autentication mAutentica = new Autentication("","","",0);
 
     private EditText mEditUser = null;
     private EditText mEditPass = null;
@@ -61,9 +62,13 @@ public class AuthFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mUser = getArguments().getString(ARG_PARAM1);
-            mPass = getArguments().getString(ARG_PARAM2);
+        if(savedInstanceState==null) {//Para que solo lo haga cuando no hay nada
+            if (getArguments() != null) {
+                mUser = getArguments().getString(ARG_PARAM1);
+                mPass = getArguments().getString(ARG_PARAM2);
+                mAutentica.setmUser(mUser);
+                mAutentica.setmPass(mPass);
+            }
         }
     }
 
@@ -71,88 +76,68 @@ public class AuthFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        if(savedInstanceState!=null){
+            Toast.makeText(getActivity(), "Cambio configuracion. ", Toast.LENGTH_SHORT).show();
+            //Cuando se cambia la configuracion se queda toda actualizado
+            mAutentica.setmUser(savedInstanceState.getString(ARG_PARAM1));
+        }
+
         // Inflate the layout for this fragment
         View fragmento = inflater.inflate(R.layout.fragment_auth, container, false);
 
-        EditText user = (EditText) fragmento.findViewById(R.id.auth_edit_user);
-        EditText pass = (EditText) fragmento.findViewById(R.id.auth_edit_pass);
-        user.setText(mUser);
-        pass.setText(mPass);
+        redibuja(fragmento);
 
         Button boton = (Button) fragmento.findViewById(R.id.auth_button_send);
-
-        mEditUser = (EditText) fragmento.findViewById(R.id.auth_edit_user);
-        mEditPass = (EditText) fragmento.findViewById(R.id.auth_edit_pass);
-        mEditIp = (EditText) fragmento.findViewById(R.id.auth_edit_ip);
-        mEditPort = (EditText) fragmento.findViewById(R.id.auth_edit_port);
-
-        mEditUser.setText(mUser);
-        mEditPass.setText(mPass);
 
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                /*Para evitar problemas de cambios en configuracion, se almacenan aquí directamente
                 String usuario = mEditUser.getText().toString();
                 String password = mEditPass.getText().toString();
                 String ip = mEditIp.getText().toString();
                 Integer puerto = Integer.parseInt(mEditPort.getText().toString());
+                */
                 //Toast.makeText(fragmento.this,nombre,Toast.LENGTH_SHORT).show();
-                Autentication datos = new Autentication(usuario, password, ip, puerto);
 
-                Toast.makeText(getActivity(), "Usuario: " + datos.getmUser(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity(), "Password: " + datos.getmPass(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity(), "Ip: " + datos.getmIP(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity(), "Puerto: " + datos.getmPort(), Toast.LENGTH_SHORT).show();
+                //Autentication datos = new Autentication(usuario, password, ip, puerto);
+                mAutentica = new Autentication(mUser,mPass,null,0);
+
+                Toast.makeText(getActivity(), "Usuario: " + mAutentica.getmUser(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Password: " + mAutentica.getmPass(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Ip: " + mAutentica.getmIP(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Puerto: " + mAutentica.getmPort(), Toast.LENGTH_SHORT).show();
+
             }
         });
 
-/*
-        mEditUser.setOnFocusChangeListener(new View.OnFocusChangeListener(){
-            public void onFocusChange(View v, boolean hasFocus){
-                if(hasFocus) {
-                    mEditUser.setHint("");
-                    mEditUser.setHintTextColor(getResources().getColor(R.color.colorAccent));//.getColor(R.color.white)
-                }else
-                    mEditUser.setHint("Your hint");
-            }
-        });*/
-        /*
-        mEditUser.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener(){
-            public void onClick(View v) {
-                mEditUser.setHint("");
-            }
-        });
-        */
-        /*
-        mEditUser.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEventCompat event) {
-                // If the event is a key-down event on the "enter" button
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    perform action;
-                    return true;
-                }
-                return false;
-            }
-        });*/
-        /*
-        mEditUser.setOnKeyListener(new View.OnKeyListener() {
-
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-
-                if (event.getAction() != KeyEvent.ACTION_UP) {
-                    mEditUser.setHint("");
-                }
-                if(event.getAction()!= KeyEvent.ACTION_DOWN){
-                    mEditUser.setHint("Introduce usuario");
-                }
-
-                return false;
-            }
-        });
-        */
         return fragmento;
+
     }
 
+
+    //Método que redibuja las vistas
+    private void redibuja(View fragmento){
+
+
+        mEditUser = (EditText) fragmento.findViewById(R.id.auth_edit_user);
+        mEditPass = (EditText) fragmento.findViewById(R.id.auth_edit_pass);
+        //Cuando pierde el foco, actualiza la variable
+        mEditUser.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+            @Override
+            public void OnfocusChange(View v, boolean hasFocus){
+                mAutentica.setmUser(mEditUser.getEditableText().toString());
+            }
+        });
+
+        mEditUser.setText(mAutentica.getmUser());
+        mEditPass.setText(mAutentica.getmPass());
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+    }
 }
