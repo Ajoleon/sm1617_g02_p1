@@ -10,6 +10,7 @@
     <string name="auth_hint_ip">Direccion del servidor</string>
     <string name="auth_port">Puerto</string>
     <string name="auth_hint_port">Puerto de conexion</string>
+    <string name="action_settings">jjj</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

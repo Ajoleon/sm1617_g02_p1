@@ -5,7 +5,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+//Para la barra de acción
+import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -23,6 +27,12 @@ public class MainActivity extends AppCompatActivity {
         //Establecemos la vista del activity_main
         setContentView(R.layout.activity_main);
 
+        //Hace falta paquete v7.widget.toolbar
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
+
+
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
 
@@ -39,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         ft.commit();
     }
+
 
 
 }
