@@ -52,7 +52,7 @@ public class AuthFragment extends Fragment {
      * @param pass Contraseña inicial
      * @return Una instancia del fragmento AuthFragment, actualizada con los valores inicializados
      */
-    // TODO: Rename and change types and number of parameters
+
     public static AuthFragment newInstance(String user, String pass) {
         //Cuando se crea una instanca nueva, colocamos los valores iniciales de usuario y password
         AuthFragment fragment = new AuthFragment();
@@ -95,7 +95,7 @@ public class AuthFragment extends Fragment {
         //Si ya se había creado una instancia
         if(savedInstanceState!=null){
             //Mensaje de cambio de configuración
-            Toast.makeText(getActivity(), "Cambio configuracion. ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "onCreateView. ", Toast.LENGTH_SHORT).show();
             //Se queda toda actualizado en el objeto de la clase Autentication
             mAutentica.setmUser(savedInstanceState.getString(ARG_PARAM1));
             mAutentica.setmPass(savedInstanceState.getString(ARG_PARAM2));
@@ -108,7 +108,7 @@ public class AuthFragment extends Fragment {
 
         //Establecemos el botón según el id de este
         Button boton = (Button) fragmento.findViewById(R.id.auth_button_send);
-
+//TODO al pulsar botón se coge todas las faviarbles sin tener que hacer changefocus
         //Al clickar en el botón
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,6 +135,7 @@ public class AuthFragment extends Fragment {
 
         //Devolvemos el fragmento redibujado
         return fragmento;
+
 
     }
 

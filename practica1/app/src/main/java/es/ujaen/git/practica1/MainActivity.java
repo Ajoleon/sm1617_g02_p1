@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param savedInstanceState
      */
-
+    Boolean autenticado = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,45 +37,89 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-
-        //Fragmento que existe en el main_frame
         Fragment f = fm.findFragmentById(R.id.main_frame);
 
-        if(f==null){//Si no es null es que había un fragmento antes
-            //Iniciamos las variables de usuario y contraseña
-            AuthFragment au = AuthFragment.newInstance("pepe", "12345");
+        if(!autenticado){//Si no está ya autenticado
+
             //Añadimos el fragmento al main_frame
-            ft.add(R.id.main_frame, au);
+            if(f==null){
+                //No hay ningun fragmento
+                AuthFragment au = AuthFragment.newInstance("pepe", "12345");
+                ft.add(R.id.main_frame, au);//Si no había ninguno antes
+
+            }/*else{
+                //Si había algún fragmento antes, se elimina y se añade (se da en el recreado)
+                ft.remove(f);
+                ft.add(R.id.main_frame, au);
+            }*/
+
             ft.addToBackStack(null);
+
+            ft.commit();//Al recrear la actividad hace falta, ya que deja lo que habíamos escrito.
+
+            autenticado = true;
         }
-
-
-        ft.commit();
-
 
         listview();
 
     }
 
     public void listview(){
-
-
         //String para listview
-        final String[] opciones = { "Opción 1", "Opción 2", "Opción 3", "Opción 4" };
+        final String[] opciones = { "Explicación", "Autenticación"};
 
         ArrayAdapter adaptador = new ArrayAdapter(this, android.R.layout.simple_list_item_1, opciones);
         //Adaptador para listview
 
-        ListView listView = (ListView) findViewById(R.id.list_view);
+        final ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adaptador);
 
         listView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> a, View v, int position, long id){
                 //Acciones necesarias al hacer click
+                FragmentManager fm = getSupportFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                Fragment f = fm.findFragmentById(R.id.main_frame);
+                Explanation e;
+
+                switch (position){
+
+                    case 0:
+                        e = Explanation.newInstance();
+
+                        if(f!=null){
+                            //Si había algún fragmento antes, se elimina y se añade
+                            ft.remove(f);
+                            ft.add(R.id.main_frame, e);
+                        }else{
+                            ft.add(R.id.main_frame, e);//Si no había ninguno antes
+                        }
+                        ft.addToBackStack(null);
+                        ft.commit();
+                        autenticado = false;//hace que se reinicie la actividad de autenticar
+                        break;
+                    case 1:
+
+                        if(!autenticado){//Si no es false es que había un fragmento de autenticacion antes
+                            //Añadimos el fragmento al main_frame
+
+                            //Si había entrDO ANTERIORMENTE EN LA EXPLICACION
+                            AuthFragment au = AuthFragment.newInstance("pepe", "12345");
+                            ft.replace(R.id.main_frame, au);//Si no había ninguno antes
+
+                            ft.addToBackStack(null);
+
+                            ft.commit();//Al recrear la actividad hace falta
+
+                            autenticado = true;
+                        }
+                        break;
+                }
+
                 String texto= String.valueOf(a.getItemAtPosition(position));
 
-                Toast.makeText(MainActivity.this, texto, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, texto +", con posicion: "+ position, Toast.LENGTH_SHORT).show();
 
             }
         });
