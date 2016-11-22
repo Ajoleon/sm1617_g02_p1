@@ -9,25 +9,31 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="es.ujaen.git.practica1.MainActivity">
 
+    <!--Toolbar-->
+
+
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/main_title"
+        android:id="@+id/main_text_title"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/textView" />
-    <LinearLayout
+        android:background="@mipmap/title_background"
+        android:padding ="5dp"/>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:id="@+id/main_frame"
-            android:background="#11f1e2"
-            android:layout_below="@+id/textView"></FrameLayout>
-    </LinearLayout>
-</RelativeLayout>
+        android:layout_below="@+id/main_text_title"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/main_frame"
+        android:background="@mipmap/main_background">
 
+
+    </FrameLayout>
+
+
+
+</RelativeLayout>
