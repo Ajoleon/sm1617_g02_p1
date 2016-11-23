@@ -39,8 +39,7 @@
         android:layout_height="wrap_content"
         android:text="@string/auth_enviar"
         android:id="@+id/auth_button_send"
-        android:layout_below="@+id/auth_edit_port"
-        android:onClick="onSend" />
+        android:layout_below="@+id/auth_edit_port"/>
 
     <EditText
         android:layout_width="200dp"

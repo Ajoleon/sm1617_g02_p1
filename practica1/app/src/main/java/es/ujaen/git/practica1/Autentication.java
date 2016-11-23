@@ -1,16 +1,14 @@
 package es.ujaen.git.practica1;
 
-/**
- * Created by Antonio on 29/09/2016.
- * Nota: Poner las variables en ingles .Para java doc pongo dos asteriscos.
- */
- /**Clase para recoger los datos*/
+ /**Clase para recoger los datos
+  *
+  */
 public class Autentication {
 
     public static final int SERVICE_PORT=6000;
-	/**Al declararse protected no se pueden usar fuera de la clase, hay que crear un constructor para introducir datos.
-	*/
-    protected String mUser="user"; //inicializarlo, orotected es que solo puedo usarlo en clases que heredan
+	//Al declararse protected no se pueden usar fuera de la clase, hay que crear un constructor para introducir datos
+     //Inicializarlo, protected es que solo puedo usarlo en clases que heredan
+    protected String mUser="user";
     protected String mPass ="";
     protected String mIP = "127.0.0.1";
     protected int mPort = SERVICE_PORT;
@@ -24,10 +22,11 @@ public class Autentication {
         mIP = IP;
     }
 
+     //Para conseguir el usuario de la clase
      public String getmUser() {
          return mUser;
      }
-
+     //Para establecer el usuario de la clase
      public void setmUser(String User) {
          mUser = User;
      }
@@ -56,4 +55,4 @@ public class Autentication {
          mPort = Port;
      }
  }
-// Autentication auth = new Autentication("pepe", "123456", "127.0.0.1", Autentication.SERVICE_PORT); forma de llamar al constructor
+// Autentication auth = new Autentication("pepe", "123456", "127.0.0.1", Autentication.SERVICE_PORT); //forma de llamar al constructor
