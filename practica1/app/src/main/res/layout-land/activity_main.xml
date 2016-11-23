@@ -24,7 +24,9 @@
             android:text="@string/main_title"
             android:id="@+id/main_text_title"
             android:background="@mipmap/title_background"
-            android:padding ="5dp" />
+            android:padding ="5dp"
+            android:textSize="24sp"
+            android:textStyle="normal|bold" />
 
         <FrameLayout
             android:layout_width="match_parent"

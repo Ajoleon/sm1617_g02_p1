@@ -10,7 +10,7 @@
     tools:context="es.ujaen.git.practica1.MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/auth_pass"
@@ -19,7 +19,7 @@
         />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/auth_port"
@@ -27,7 +27,7 @@
         android:layout_below="@+id/auth_edit_ip" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/auth_ip"
@@ -43,7 +43,7 @@
         android:onClick="onSend" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/auth_edit_pass"
         android:hint="@string/auth_hint_pass"
@@ -53,7 +53,7 @@
         android:layout_alignStart="@+id/auth_edit_user" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/auth_edit_ip"
         android:hint="@string/auth_hint_ip"
@@ -62,7 +62,7 @@
         android:layout_alignStart="@+id/auth_edit_pass" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/auth_edit_port"
         android:hint="@string/auth_hint_port"
@@ -72,18 +72,16 @@
         android:layout_alignStart="@+id/auth_edit_ip" />
 
     <EditText
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/auth_edit_user"
         android:hint="@string/auth_hint_user"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/auth_label_ip"
-        android:layout_toEndOf="@+id/auth_label_ip"
         android:layout_marginLeft="35dp"
-        android:layout_marginStart="35dp" />
+        android:layout_marginStart="35dp"
+        android:layout_width="200dp" />
 
     <TextView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/auth_name"
@@ -91,6 +89,7 @@
         android:layout_alignBaseline="@+id/auth_edit_user"
         android:layout_alignBottom="@+id/auth_edit_user"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_width="150dp" />
 
 </RelativeLayout>

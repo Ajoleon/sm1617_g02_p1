@@ -102,13 +102,13 @@ public class AuthFragment extends Fragment {
         }
 
         // Crea el fragmento fragment_auth
-        View fragmento = inflater.inflate(R.layout.fragment_auth, container, false);
+        final View fragmento = inflater.inflate(R.layout.fragment_auth, container, false);
 
         redibuja(fragmento);
 
         //Establecemos el botón según el id de este
         Button boton = (Button) fragmento.findViewById(R.id.auth_button_send);
-//TODO al pulsar botón se coge todas las faviarbles sin tener que hacer changefocus
+        //TODO al pulsar botón se coge todas las faviarbles sin tener que hacer changefocus
         //Al clickar en el botón
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,6 +123,22 @@ public class AuthFragment extends Fragment {
 
                 //Autentication datos = new Autentication(usuario, password, ip, puerto);
                 //mAutentica = new Autentication(mUser,mPass,null,0);
+                mEditUser = (EditText) fragmento.findViewById(R.id.auth_edit_user);
+                mEditPass = (EditText) fragmento.findViewById(R.id.auth_edit_pass);
+                mEditIp = (EditText) fragmento.findViewById(R.id.auth_edit_ip);
+                mEditPort = (EditText) fragmento.findViewById(R.id.auth_edit_port);
+
+                mAutentica.setmUser(mEditUser.getEditableText().toString());
+                mAutentica.setmPass(mEditPass.getEditableText().toString());
+                mAutentica.setmIP(mEditIp.getEditableText().toString());
+                int myNum=0;
+                try {
+                    myNum = Integer.parseInt(mEditPort.getEditableText().toString());
+                } catch(NumberFormatException nfe) {
+                    System.out.println("Could not parse " + nfe);
+                }
+                mAutentica.setmPort(myNum);
+
 
                 //Tostadas indicando los valores de cada atributo del objeto mAutentica
                 Toast.makeText(getActivity(), "Usuario: " + mAutentica.getmUser(), Toast.LENGTH_SHORT).show();
