@@ -1,5 +1,6 @@
 package es.ujaen.git.practica1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
@@ -149,11 +150,14 @@ public class AuthFragment extends Fragment {
                 Toast.makeText(getActivity(), "Ip: " + mAutentica.getmIP(), Toast.LENGTH_SHORT).show();
                 Toast.makeText(getActivity(), "Puerto: " + mAutentica.getmPort(), Toast.LENGTH_SHORT).show();
 
-/*
+
                 //Paso de parámetros
-                Intent intent= new Intent(getActivity(), PasoParam.class);
-                intent.putExtra("IP", mAutentica.getmIP());
-                startActivity(intent);*/
+                Intent intent= new Intent(getActivity(), Main2Activity.class);
+                intent.putExtra("User", mAutentica.getmUser());
+                intent.putExtra("Pass", mAutentica.getmPass());
+                intent.putExtra("Ip", mAutentica.getmIP());
+                intent.putExtra("Port", mAutentica.getmPort());
+                startActivity(intent);
 
             }
         });

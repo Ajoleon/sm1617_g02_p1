@@ -22,7 +22,7 @@ import android.widget.Toast;
  */
 public class MainActivity extends AppCompatActivity {
     //Boolean que indica si se ha entrado en el fragmento de autenticación
-    Boolean autenticado = true;
+    //Boolean autenticado = true; Guardarlo en el onsveinstancestate o en las preferencias y recogerlo en oncreate si hiciera falta
 
     /**Método que se inicia al crear la actividad principal.
      *
@@ -53,16 +53,17 @@ public class MainActivity extends AppCompatActivity {
             AuthFragment au = AuthFragment.newInstance("pepe", "12345");
             //Añadimos el fragmento al main_frame
             ft.add(R.id.main_frame, au);
+            //Añadimos null a la pila hacia atrás
+            ft.addToBackStack(null);
+            //Ejecuta la transacción de fragmentos
+            ft.commit();
 
         }/*else{
             //Si había algún fragmento antes, se elimina y se añade (se da en el recreado)
             ft.remove(f);
             ft.add(R.id.main_frame, au);
         }*/
-        //Añadimos null a la pila hacia atrás
-        ft.addToBackStack(null);
-        //Ejecuta la transacción de fragmentos
-        ft.commit();
+
 
         //Cambiamos autenticado a true, ya que ha entrado en el fragmento de autenticación
         //autenticado = true;
@@ -111,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
                     //Caso de posición 0, que es del fragmento de explicación
                     case 0:
-                        if(autenticado) {
+                        //if(autenticado) {
                             //Se inicializa una nueva instancia del fragmento de explicación
                             Explanation e = Explanation.newInstance();
 
@@ -124,8 +125,8 @@ public class MainActivity extends AppCompatActivity {
                             ft.commit();
 
                             //Establecemos autenticado a false
-                            autenticado = false;
-                        }
+                        //    autenticado = false;
+                        //}
 
                         break;
 
@@ -133,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                     case 1:
                         //Si no se ha accedido al fragmento de autenticado, para que no haya
                         //un bug en el recreado del fragmento el cambio a la otra vista lo realice
-                        if(!autenticado){
+                        //if(!autenticado){
                             //Creamos una nueva instancia del fragmento de autenticación, donde se inician los parámetros
                             AuthFragment au = AuthFragment.newInstance("pepe", "12345");
                             //Reemplazamos el fragmento ya existente por el de autenticación
@@ -145,8 +146,8 @@ public class MainActivity extends AppCompatActivity {
                             ft.commit();
 
                             //Establecemos autenticado a true porque ha entrado en el fragmento de autenticación
-                            autenticado = true;
-                        }
+                        //    autenticado = true;
+                        //}
 
                         break;
                 }
