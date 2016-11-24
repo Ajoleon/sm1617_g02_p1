@@ -53,6 +53,7 @@ public class PasoParam extends Fragment {
             tv4.setText(puerto);
 
             Toast.makeText(getActivity(), "Usuario: " + usuario, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Puerto: " + puerto, Toast.LENGTH_SHORT).show();
         }
 
         //Devuelve la vista

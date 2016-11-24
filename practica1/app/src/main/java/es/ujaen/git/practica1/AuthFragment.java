@@ -156,7 +156,8 @@ public class AuthFragment extends Fragment {
                 intent.putExtra("User", mAutentica.getmUser());
                 intent.putExtra("Pass", mAutentica.getmPass());
                 intent.putExtra("Ip", mAutentica.getmIP());
-                intent.putExtra("Port", mAutentica.getmPort());
+                Integer a = mAutentica.getmPort();
+                intent.putExtra("Port", a.toString());
                 startActivity(intent);
 
             }
