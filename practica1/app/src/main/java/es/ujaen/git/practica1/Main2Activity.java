@@ -36,7 +36,6 @@ public class Main2Activity extends AppCompatActivity {
             //Ejecuta la transacción de fragmentos
             ft.commit();
 
-
         }
     }
 }

@@ -151,7 +151,7 @@ public class AuthFragment extends Fragment {
                 Toast.makeText(getActivity(), "Puerto: " + mAutentica.getmPort(), Toast.LENGTH_SHORT).show();
 
 
-                //Paso de parámetros
+                //Paso de parámetros con intent a la nueva actividad
                 Intent intent= new Intent(getActivity(), Main2Activity.class);
                 intent.putExtra("User", mAutentica.getmUser());
                 intent.putExtra("Pass", mAutentica.getmPass());

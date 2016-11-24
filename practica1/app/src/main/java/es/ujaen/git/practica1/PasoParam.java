@@ -35,6 +35,7 @@ public class PasoParam extends Fragment {
         //Infla  el contenedor con el fragmento de explicación
         View fragmento = inflater.inflate(R.layout.fragment_paso, container, false);
 
+        //Recogemos los datos del intent que se habían enviado a esta actividad
         Bundle bundle= getActivity().getIntent().getExtras();
         if(bundle!=null){
             String usuario = bundle.getString("User");
@@ -45,11 +46,11 @@ public class PasoParam extends Fragment {
             TextView tv1 = (TextView)fragmento.findViewById(R.id.textView1);
             tv1.setText(usuario);
             TextView tv2 = (TextView)fragmento.findViewById(R.id.textView3);
-            tv2.setText(usuario);
+            tv2.setText(clave);
             TextView tv3 = (TextView)fragmento.findViewById(R.id.textView4);
-            tv3.setText(usuario);
+            tv3.setText(ip);
             TextView tv4 = (TextView)fragmento.findViewById(R.id.textView5);
-            tv4.setText(usuario);
+            tv4.setText(puerto);
 
             Toast.makeText(getActivity(), "Usuario: " + usuario, Toast.LENGTH_SHORT).show();
         }
