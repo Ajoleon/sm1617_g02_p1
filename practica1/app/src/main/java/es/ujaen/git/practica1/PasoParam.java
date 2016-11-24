@@ -41,7 +41,7 @@ public class PasoParam extends Fragment {
             String usuario = bundle.getString("User");
             String clave = bundle.getString("Pass");
             String ip = bundle.getString("Ip");
-            String puerto = bundle.getString("Port");
+            Integer puerto = bundle.getInt("Port");
 
             TextView tv1 = (TextView)fragmento.findViewById(R.id.textView1);
             tv1.setText(usuario);
